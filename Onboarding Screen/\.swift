@@ -11,10 +11,36 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+       
+        //let launchedBefore = UserDefaults.standard.bool(forKey: "hasLaunched")
+        let firstLaunch = UserDefaults.standard.bool(forKey: "firstLaunch")
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let launchStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let mainStoryboarrd = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        var vc: UIViewController
+        
+        print("FLH: first launch is \(firstLaunch)")
+        
+        if firstLaunch
+        {
+            vc = mainStoryboarrd.instantiateInitialViewController()!
+        }
+        else
+        {
+            vc = launchStoryboard.instantiateViewController(withIdentifier: "notificationStoryboard")
+        }
+        
+        UserDefaults.standard.set(true, forKey: "hasLaunched")
+        
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

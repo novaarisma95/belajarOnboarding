@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ReadyViewController.swift
 //  Onboarding Screen
 //
 //  Created by Nova Arisma on 10/29/19.
@@ -8,17 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ReadyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
     
     @IBAction func continueButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "mainVC", sender: self)
-
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "mainVC") as! ViewController
+        self.present(mainVC, animated: true, completion: nil)
+           }
     }
-}
+    
+    
+
 

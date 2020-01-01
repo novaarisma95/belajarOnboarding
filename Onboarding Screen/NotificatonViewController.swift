@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NotificatonViewController.swift
 //  Onboarding Screen
 //
 //  Created by Nova Arisma on 10/29/19.
@@ -8,17 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NotificatonViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
     
     @IBAction func continueButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "mainVC", sender: self)
-
+        self.performSegue(withIdentifier: "notiToLocation", sender: self)
+           }
     }
-}
+    
+    
+
 
